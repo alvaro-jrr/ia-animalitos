@@ -37,6 +37,21 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    flavorDimensions += listOf("default")
+
+    productFlavors {
+        create("development") {
+            dimension = "default"
+            manifestPlaceholders["appName"] = "IA Animalitos [DEV]"
+            applicationIdSuffix = ".dev"
+        }
+
+        create("production") {
+            dimension = "default"
+            manifestPlaceholders["appName"] = "IA Animalitos"
+        }
+    }
 }
 
 flutter {
