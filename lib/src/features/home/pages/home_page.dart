@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:ai_animals_lottery/src/app.dart';
+import 'package:ai_animals_lottery/src/features/home/widgets/home_app_bar.dart';
 import 'package:ai_animals_lottery/src/features/home/widgets/home_bottom_navigation_bar.dart';
 import 'package:ai_animals_lottery/src/features/predictions/pages/predictions_page.dart';
 import 'package:ai_animals_lottery/src/features/results/pages/results_page.dart';
@@ -19,6 +21,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: HomeAppBar(
+        key: ValueKey(_currentIndex),
+        settings: _getAppBarSettingsByIndex(_currentIndex),
+      ),
       body: IndexedStack(
         index: _currentIndex,
         children: [
@@ -36,5 +42,21 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
+  }
+
+  /// Returns the app bar settings for the given [index].
+  HomeAppBarSettings _getAppBarSettingsByIndex(int index) {
+    /// Results.
+    if (index == 0) {
+      return HomeAppBarSettings(title: localization.results);
+    }
+
+    /// Predictions.
+    if (index == 1) {
+      return HomeAppBarSettings(title: localization.predictions);
+    }
+
+    /// Statistics.
+    return HomeAppBarSettings(title: localization.statistics);
   }
 }
