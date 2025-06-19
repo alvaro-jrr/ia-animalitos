@@ -1,0 +1,50 @@
+{
+  "configurations": [
+    {
+      "name": "Develop (Debug)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "args": ["--flavor=development"]
+    },
+    {
+      "name": "Develop (Profile)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "flutterMode": "profile",
+      "args": ["--flavor=development"]
+    },
+    {
+      "name": "Develop (Release)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "flutterMode": "release",
+      "args": ["--flavor=development"]
+    },
+    {
+      "name": "Production (Debug)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "args": ["--flavor=production"]
+    },
+    {
+      "name": "Production (Profile)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "flutterMode": "profile",
+      "args": ["--flavor=production"]
+    },
+    {
+      "name": "Production (Release)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "flutterMode": "release",
+      "args": ["--flavor=production"]
+    }
+  ]
+}
