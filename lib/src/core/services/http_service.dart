@@ -38,13 +38,15 @@ class HttpService {
     Object? body,
   }) async {
     try {
-      return switch (method) {
-        HttpMethod.get => await http.get(url, headers: headers),
-        HttpMethod.post => await http.post(url, headers: headers, body: body),
-        HttpMethod.put => await http.put(url, headers: headers, body: body),
-        HttpMethod.delete => await http.delete(url, headers: headers),
-        HttpMethod.patch => await http.patch(url, headers: headers, body: body),
+      final response = await switch (method) {
+        HttpMethod.get => http.get(url, headers: headers),
+        HttpMethod.post => http.post(url, headers: headers, body: body),
+        HttpMethod.put => http.put(url, headers: headers, body: body),
+        HttpMethod.delete => http.delete(url, headers: headers),
+        HttpMethod.patch => http.patch(url, headers: headers, body: body),
       };
+
+      return response;
     } catch (e) {
       return null;
     }
