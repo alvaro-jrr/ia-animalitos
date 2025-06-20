@@ -48,7 +48,23 @@ class _HomePageState extends State<HomePage> {
   HomeAppBarSettings _getAppBarSettingsByIndex(int index) {
     /// Results.
     if (index == 0) {
-      return HomeAppBarSettings(title: localization.results);
+      return HomeAppBarSettings(
+        title: localization.results,
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(child: Text(localization.today), onTap: () {}),
+                PopupMenuItem(
+                  child: Text(localization.yesterday),
+                  onTap: () {},
+                ),
+              ];
+            },
+            icon: Icon(Icons.calendar_today),
+          ),
+        ],
+      );
     }
 
     /// Predictions.

@@ -115,6 +115,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Estadísticas'**
   String get statistics;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In es, this message translates to:
+  /// **'Ayer'**
+  String get yesterday;
+
+  /// No description provided for @today.
+  ///
+  /// In es, this message translates to:
+  /// **'Hoy'**
+  String get today;
 }
 
 class _AppLocalizationsDelegate

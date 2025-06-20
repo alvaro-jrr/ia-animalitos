@@ -19,7 +19,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final selectedColor = theme.colorScheme.primary;
-    final unselectedColor = theme.colorScheme.onSurface.withValues(alpha: 0.5);
+    final unselectedColor = theme.colorScheme.secondary.withValues(alpha: 0.8);
 
     return Container(
       decoration: BoxDecoration(
@@ -35,7 +35,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
         selectedIndex: selectedIndex,
         onDestinationSelected: onDestinationSelected,
         indicatorColor: Colors.transparent,
-        backgroundColor: theme.colorScheme.onPrimary,
+        backgroundColor: theme.scaffoldBackgroundColor,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {
           return TextStyle(
             fontSize: 12.0,

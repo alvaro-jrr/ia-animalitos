@@ -16,4 +16,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get statistics => 'Statistics';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String get today => 'Today';
 }
