@@ -1,3 +1,8 @@
 {
-  "@@locale": "es"
+  "@@locale": "es",
+  "results": "Resultados",
+  "predictions": "Predicciones",
+  "statistics": "Estadísticas",
+  "yesterday": "Ayer",
+  "today": "Hoy"
 }

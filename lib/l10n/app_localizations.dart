@@ -97,6 +97,36 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
   ];
+
+  /// No description provided for @results.
+  ///
+  /// In es, this message translates to:
+  /// **'Resultados'**
+  String get results;
+
+  /// No description provided for @predictions.
+  ///
+  /// In es, this message translates to:
+  /// **'Predicciones'**
+  String get predictions;
+
+  /// No description provided for @statistics.
+  ///
+  /// In es, this message translates to:
+  /// **'Estadísticas'**
+  String get statistics;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In es, this message translates to:
+  /// **'Ayer'**
+  String get yesterday;
+
+  /// No description provided for @today.
+  ///
+  /// In es, this message translates to:
+  /// **'Hoy'**
+  String get today;
 }
 
 class _AppLocalizationsDelegate

@@ -7,4 +7,19 @@ import 'app_localizations.dart';
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get results => 'Results';
+
+  @override
+  String get predictions => 'Predictions';
+
+  @override
+  String get statistics => 'Statistics';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String get today => 'Today';
 }

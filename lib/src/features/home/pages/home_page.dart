@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+
+import 'package:ai_animals_lottery/src/app.dart';
+import 'package:ai_animals_lottery/src/features/home/widgets/home_app_bar.dart';
+import 'package:ai_animals_lottery/src/features/home/widgets/home_bottom_navigation_bar.dart';
+import 'package:ai_animals_lottery/src/features/predictions/pages/predictions_page.dart';
+import 'package:ai_animals_lottery/src/features/results/pages/results_page.dart';
+import 'package:ai_animals_lottery/src/features/statistics/pages/statistics_page.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  /// The current index of the bottom navigation bar.
+  int _currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: HomeAppBar(
+        key: ValueKey(_currentIndex),
+        settings: _getAppBarSettingsByIndex(_currentIndex),
+      ),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: [
+          const ResultsPage(),
+          const PredictionsPage(),
+          const StatisticsPage(),
+        ],
+      ),
+      bottomNavigationBar: HomeBottomNavigationBar(
+        selectedIndex: _currentIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+    );
+  }
+
+  /// Returns the app bar settings for the given [index].
+  HomeAppBarSettings _getAppBarSettingsByIndex(int index) {
+    /// Results.
+    if (index == 0) {
+      return HomeAppBarSettings(
+        title: localization.results,
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(child: Text(localization.today), onTap: () {}),
+                PopupMenuItem(
+                  child: Text(localization.yesterday),
+                  onTap: () {},
+                ),
+              ];
+            },
+            icon: Icon(Icons.calendar_today),
+          ),
+        ],
+      );
+    }
+
+    /// Predictions.
+    if (index == 1) {
+      return HomeAppBarSettings(title: localization.predictions);
+    }
+
+    /// Statistics.
+    return HomeAppBarSettings(title: localization.statistics);
+  }
+}
