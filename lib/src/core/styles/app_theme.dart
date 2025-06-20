@@ -12,6 +12,15 @@ class AppTheme {
       brightness: Brightness.light,
     ),
     dividerColor: Colors.grey.shade200,
+    popupMenuTheme: PopupMenuThemeData(
+      color: Colors.white,
+      elevation: 0,
+      position: PopupMenuPosition.under,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.grey.shade400),
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+    ),
   );
 
   /// The dark theme.
@@ -20,6 +29,10 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primary,
       brightness: Brightness.dark,
+    ),
+    popupMenuTheme: PopupMenuThemeData(
+      elevation: 0,
+      position: PopupMenuPosition.under,
     ),
   );
 }
