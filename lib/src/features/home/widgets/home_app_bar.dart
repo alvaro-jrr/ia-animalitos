@@ -8,7 +8,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(title: Text(settings.title), actions: settings.actions);
+    final theme = Theme.of(context);
+
+    return AppBar(
+      backgroundColor: theme.scaffoldBackgroundColor,
+      title: Text(
+        settings.title,
+        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+      ),
+      actions: settings.actions,
+    );
   }
 
   @override

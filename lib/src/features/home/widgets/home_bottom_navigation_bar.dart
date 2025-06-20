@@ -17,27 +17,52 @@ class HomeBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBar(
-      elevation: 0,
-      selectedIndex: selectedIndex,
-      onDestinationSelected: onDestinationSelected,
-      destinations: [
-        NavigationDestination(
-          icon: Icon(Icons.confirmation_num_outlined),
-          selectedIcon: Icon(Icons.confirmation_num),
-          label: localization.results,
+    final theme = Theme.of(context);
+    final selectedColor = theme.colorScheme.primary;
+    final unselectedColor = theme.colorScheme.onSurface.withValues(alpha: 0.5);
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: theme.colorScheme.outlineVariant.withValues(alpha: 0.5),
+            width: 1.0,
+          ),
         ),
-        NavigationDestination(
-          icon: Icon(Icons.bar_chart_outlined),
-          selectedIcon: Icon(Icons.bar_chart),
-          label: localization.predictions,
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.analytics_outlined),
-          selectedIcon: Icon(Icons.analytics),
-          label: localization.statistics,
-        ),
-      ],
+      ),
+      child: NavigationBar(
+        elevation: 0,
+        selectedIndex: selectedIndex,
+        onDestinationSelected: onDestinationSelected,
+        indicatorColor: Colors.transparent,
+        backgroundColor: theme.colorScheme.onPrimary,
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          return TextStyle(
+            fontSize: 12.0,
+            fontWeight: FontWeight.w500,
+            color: states.contains(WidgetState.selected)
+                ? selectedColor
+                : unselectedColor,
+          );
+        }),
+        destinations: [
+          NavigationDestination(
+            icon: Icon(Icons.confirmation_num_outlined, color: unselectedColor),
+            selectedIcon: Icon(Icons.confirmation_num, color: selectedColor),
+            label: localization.results,
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.leaderboard_outlined, color: unselectedColor),
+            selectedIcon: Icon(Icons.leaderboard, color: selectedColor),
+            label: localization.predictions,
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.analytics_outlined, color: unselectedColor),
+            selectedIcon: Icon(Icons.analytics, color: selectedColor),
+            label: localization.statistics,
+          ),
+        ],
+      ),
     );
   }
 }
