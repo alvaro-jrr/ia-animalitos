@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import 'package:ai_animals_lottery/l10n/app_localizations.dart';
 import 'package:ai_animals_lottery/src/core/services/localization_service.dart';
 import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
+import 'package:ai_animals_lottery/src/core/widgets/app_providers.dart';
 import 'package:ai_animals_lottery/src/features/home/pages/home_page.dart';
 
 /// The localization for the app.
@@ -15,14 +16,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      localeResolutionCallback: _localeResolutionCallback,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      home: const HomePage(),
+    return AppProviders(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        localeResolutionCallback: _localeResolutionCallback,
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        home: const HomePage(),
+      ),
     );
   }
 

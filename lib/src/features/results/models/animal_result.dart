@@ -1,4 +1,7 @@
 class AnimalResult {
+  /// The id of the lottery house.
+  final int lotteryHouseId;
+
   /// The animal number.
   final int number;
 
@@ -8,10 +11,15 @@ class AnimalResult {
   /// The time of the result.
   final DateTime time;
 
+  /// The image of the animal.
+  final String image;
+
   const AnimalResult({
+    required this.lotteryHouseId,
     required this.number,
     required this.name,
     required this.time,
+    required this.image,
   });
 
   /// Returns an instance from the given [json].
@@ -22,6 +30,8 @@ class AnimalResult {
       time: json['time'] is String
           ? DateTime.tryParse(json['time']) ?? DateTime.now()
           : DateTime.now(),
+      image: json['image'] ?? '',
+      lotteryHouseId: json['lottery_house_id'] ?? -1,
     );
   }
 
@@ -32,9 +42,11 @@ class AnimalResult {
     return other is AnimalResult &&
         other.number == number &&
         other.name == name &&
-        other.time == time;
+        other.time == time &&
+        other.image == image &&
+        other.lotteryHouseId == lotteryHouseId;
   }
 
   @override
-  int get hashCode => Object.hash(number, name, time);
+  int get hashCode => Object.hash(number, name, time, image, lotteryHouseId);
 }

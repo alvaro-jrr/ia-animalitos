@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
+import 'package:ai_animals_lottery/src/di.dart';
 import 'package:ai_animals_lottery/src/features/home/widgets/home_app_bar.dart';
 import 'package:ai_animals_lottery/src/features/home/widgets/home_bottom_navigation_bar.dart';
 import 'package:ai_animals_lottery/src/features/predictions/pages/predictions_page.dart';
 import 'package:ai_animals_lottery/src/features/results/pages/results_page.dart';
+import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
 import 'package:ai_animals_lottery/src/features/statistics/pages/statistics_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +19,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   /// The current index of the bottom navigation bar.
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// Get the results.
+    di.get<ResultsProvider>().getResults();
+  }
 
   @override
   Widget build(BuildContext context) {
