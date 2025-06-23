@@ -24,17 +24,7 @@ class AnimalListItem extends StatelessWidget {
       ),
       leading: SizedBox.square(
         dimension: 64.0,
-        child: Image.network(
-          animal.image,
-          fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) {
-            return Icon(
-              Icons.pets_outlined,
-              size: 32.0,
-              color: theme.colorScheme.outline,
-            );
-          },
-        ),
+        child: _AnimalImage(animal: animal),
       ),
       title: Padding(
         padding: const EdgeInsets.only(bottom: 6.0),
@@ -65,6 +55,29 @@ class AnimalListItem extends StatelessWidget {
           Text(DateFormat.jm().format(animal.time)),
         ],
       ),
+    );
+  }
+}
+
+class _AnimalImage extends StatelessWidget {
+  /// The [animal] to display.
+  final AnimalResult animal;
+
+  const _AnimalImage({required this.animal});
+
+  @override
+  Widget build(BuildContext context) {
+    final url = animal.image.trim();
+    final defaultImage = const Icon(Icons.pets_outlined, size: 32.0);
+
+    if (url.isEmpty) return defaultImage;
+
+    return Image.network(
+      url,
+      fit: BoxFit.contain,
+      errorBuilder: (context, error, stackTrace) {
+        return defaultImage;
+      },
     );
   }
 }

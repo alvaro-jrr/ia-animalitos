@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:grouped_list/grouped_list.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/animal_list_item.dart';
@@ -9,12 +10,16 @@ class ResultsList extends StatelessWidget {
   /// The results.
   final List<AnimalResult> results;
 
-  const ResultsList({super.key, required this.results});
+  /// The list [physics] to use.
+  final ScrollPhysics? physics;
+
+  const ResultsList({super.key, required this.results, this.physics});
 
   @override
   Widget build(BuildContext context) {
     return GroupedListView<AnimalResult, int>(
       padding: const EdgeInsets.all(16.0),
+      physics: physics,
       elements: results,
       separator: const SizedBox(height: 8.0),
       groupBy: (animal) => animal.lotteryHouseId,
@@ -37,5 +42,21 @@ class ResultsList extends StatelessWidget {
       },
       sort: false,
     );
+  }
+
+  /// Returns a skeleton of the results list.
+  static Widget skeleton({required int count}) {
+    final results = List.generate(
+      count,
+      (index) => AnimalResult(
+        lotteryHouseId: -1,
+        number: -1,
+        name: 'name',
+        time: DateTime.now(),
+        image: '',
+      ),
+    );
+
+    return Skeletonizer(child: ResultsList(results: results));
   }
 }

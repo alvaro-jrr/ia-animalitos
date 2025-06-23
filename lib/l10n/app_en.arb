@@ -4,5 +4,7 @@
   "predictions": "Predictions",
   "statistics": "Statistics",
   "yesterday": "Yesterday",
-  "today": "Today"
+  "today": "Today",
+  "resultsNotFound": "No results found",
+  "retry": "Retry"
 }

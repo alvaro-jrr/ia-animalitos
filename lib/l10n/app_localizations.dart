@@ -127,6 +127,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Hoy'**
   String get today;
+
+  /// No description provided for @resultsNotFound.
+  ///
+  /// In es, this message translates to:
+  /// **'No se encontraron resultados'**
+  String get resultsNotFound;
+
+  /// No description provided for @retry.
+  ///
+  /// In es, this message translates to:
+  /// **'Reintentar'**
+  String get retry;
 }
 
 class _AppLocalizationsDelegate

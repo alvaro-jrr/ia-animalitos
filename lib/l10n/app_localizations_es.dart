@@ -22,4 +22,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get today => 'Hoy';
+
+  @override
+  String get resultsNotFound => 'No se encontraron resultados';
+
+  @override
+  String get retry => 'Reintentar';
 }

@@ -6,8 +6,15 @@ class ResultsProvider extends ChangeNotifier {
   /// The results.
   List<AnimalResult> results = [];
 
+  /// Wether is loading the results.
+  bool isLoadingResults = false;
+
   /// Gets the lottery results.
   Future<void> getResults() async {
+    isLoadingResults = true;
+    notifyListeners();
+
+    // Get the results from the API.
     await Future.delayed(const Duration(seconds: 2));
 
     results = [
@@ -34,6 +41,7 @@ class ResultsProvider extends ChangeNotifier {
       ),
     ];
 
+    isLoadingResults = false;
     notifyListeners();
   }
 }
