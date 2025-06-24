@@ -28,4 +28,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get retry => 'Reintentar';
+
+  @override
+  String get selectResultsDate => 'Seleccionar fecha de resultados';
 }

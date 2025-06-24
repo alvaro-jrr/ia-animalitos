@@ -6,5 +6,6 @@
   "yesterday": "Yesterday",
   "today": "Today",
   "resultsNotFound": "No results found",
-  "retry": "Retry"
+  "retry": "Retry",
+  "selectResultsDate": "Select results date"
 }

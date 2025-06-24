@@ -21,7 +21,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actionsIconTheme: IconThemeData(color: theme.colorScheme.onPrimary),
-      actions: settings.actions,
+      actions: settings.actions.isEmpty
+          ? null
+          : [...settings.actions, const SizedBox(width: 16.0)],
     );
   }
 

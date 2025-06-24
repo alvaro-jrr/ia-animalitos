@@ -139,6 +139,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Reintentar'**
   String get retry;
+
+  /// No description provided for @selectResultsDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Seleccionar fecha de resultados'**
+  String get selectResultsDate;
 }
 
 class _AppLocalizationsDelegate

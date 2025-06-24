@@ -6,5 +6,6 @@
   "yesterday": "Ayer",
   "today": "Hoy",
   "resultsNotFound": "No se encontraron resultados",
-  "retry": "Reintentar"
+  "retry": "Reintentar",
+  "selectResultsDate": "Seleccionar fecha de resultados"
 }
