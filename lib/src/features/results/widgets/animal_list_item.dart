@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class AnimalListItem extends StatelessWidget {
   /// The [animal] to display.
@@ -83,12 +85,13 @@ class _AnimalImage extends StatelessWidget {
 
     if (url.isEmpty) return defaultImage;
 
-    return Image.network(
-      url,
+    return CachedNetworkImage(
+      imageUrl: url,
       fit: BoxFit.contain,
-      errorBuilder: (context, error, stackTrace) {
-        return defaultImage;
+      placeholder: (context, url) {
+        return Skeletonizer(child: defaultImage);
       },
+      errorWidget: (context, url, error) => defaultImage,
     );
   }
 }
