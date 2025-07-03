@@ -1,9 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class AnimalListItem extends StatelessWidget {
   /// The [animal] to display.
@@ -77,7 +78,7 @@ class _AnimalImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = animal.image.trim();
+    final url = animal.imageUrl.trim();
 
     final defaultImage = animal.isPending
         ? const Icon(Icons.hourglass_empty, size: 32.0)

@@ -13,8 +13,11 @@ class AnimalResult {
   /// The animal name.
   final String name;
 
-  /// The image of the animal.
-  final String image;
+  /// The image path.
+  final String imagePath;
+
+  /// The image URL.
+  final String imageUrl;
 
   /// Whether the result is pending.
   final bool isPending;
@@ -23,21 +26,23 @@ class AnimalResult {
     required this.lotteryHouseId,
     required this.hour,
     required this.name,
-    required this.image,
+    required this.imagePath,
+    required this.imageUrl,
     required this.number,
     this.isPending = false,
   });
 
   /// Returns an instance from the given [json].
   factory AnimalResult.fromJson(Map<String, dynamic> json) {
-    String image = '';
+    String imageUrl = '';
     final lotteryHouseId = json['id_loteria'] ?? '';
+    final imagePath = json['imagen'] ?? '';
 
     // Build the image URL.
-    if (json['imagen'] is String) {
-      image = Uri.https(
+    if (imagePath.isNotEmpty) {
+      imageUrl = Uri.https(
         FlavorSettings.instance.values.baseApiUrl,
-        '/imagenes/$lotteryHouseId/${json['imagen']}',
+        '/imagenes/$lotteryHouseId/$imagePath',
       ).toString();
     }
 
@@ -45,7 +50,8 @@ class AnimalResult {
       lotteryHouseId: lotteryHouseId,
       hour: json['desc_hora'] ?? '',
       name: json['desc_animal'] ?? '',
-      image: image,
+      imagePath: imagePath,
+      imageUrl: imageUrl,
       number: json['id_animal'] is String
           ? int.tryParse(json['id_animal']) ?? 0
           : 0,

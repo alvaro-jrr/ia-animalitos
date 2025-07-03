@@ -60,7 +60,8 @@ class ResultsList extends StatelessWidget {
         lotteryHouseId: '1',
         hour: '08:30 AM',
         name: 'name',
-        image: '',
+        imagePath: '',
+        imageUrl: '',
         number: 1,
       ),
     );
