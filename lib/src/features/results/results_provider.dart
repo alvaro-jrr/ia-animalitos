@@ -17,20 +17,6 @@ class ResultsProvider extends ChangeNotifier {
   /// Wether is loading the results.
   bool isLoadingResults = false;
 
-  /// The dates of the results.
-  late ResultDates dates;
-
-  /// The selected date.
-  late DateTime selectedDate;
-
-  ResultsProvider() {
-    final now = DateUtils.dateOnly(DateTime.now());
-
-    // Set the dates.
-    dates = (today: now, yesterday: now.subtract(const Duration(days: 1)));
-    selectedDate = now;
-  }
-
   /// Gets the lottery results.
   Future<void> getResults() async {
     isLoadingResults = true;
@@ -43,15 +29,6 @@ class ResultsProvider extends ChangeNotifier {
     lotteryHouses = response?.lotteryHouses ?? {};
 
     isLoadingResults = false;
-    notifyListeners();
-  }
-
-  /// Selects the date.
-  void selectDate(DateTime date) {
-    // Do nothing if the date is the same as the selected date.
-    if (date == selectedDate) return;
-
-    selectedDate = date;
     notifyListeners();
   }
 }

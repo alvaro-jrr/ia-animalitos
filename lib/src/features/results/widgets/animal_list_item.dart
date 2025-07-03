@@ -43,7 +43,7 @@ class AnimalListItem extends StatelessWidget {
               ),
               decoration: ShapeDecoration(
                 color: theme.colorScheme.primaryContainer.withValues(
-                  alpha: 0.5,
+                  alpha: 0.25,
                 ),
                 shape: StadiumBorder(),
               ),
