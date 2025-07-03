@@ -7,5 +7,6 @@
   "today": "Today",
   "resultsNotFound": "No results found",
   "retry": "Retry",
-  "selectResultsDate": "Select results date"
+  "selectResultsDate": "Select results date",
+  "onStandBy": "On stand by"
 }

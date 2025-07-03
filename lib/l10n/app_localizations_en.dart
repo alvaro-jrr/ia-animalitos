@@ -31,4 +31,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectResultsDate => 'Select results date';
+
+  @override
+  String get onStandBy => 'On stand by';
 }

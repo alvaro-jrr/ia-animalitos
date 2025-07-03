@@ -145,6 +145,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Seleccionar fecha de resultados'**
   String get selectResultsDate;
+
+  /// No description provided for @onStandBy.
+  ///
+  /// In es, this message translates to:
+  /// **'En espera'**
+  String get onStandBy;
 }
 
 class _AppLocalizationsDelegate
