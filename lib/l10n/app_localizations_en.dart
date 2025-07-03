@@ -22,4 +22,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get today => 'Today';
+
+  @override
+  String get resultsNotFound => 'No results found';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get selectResultsDate => 'Select results date';
+
+  @override
+  String get onStandBy => 'On stand by';
 }

@@ -11,12 +11,19 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     final theme = Theme.of(context);
 
     return AppBar(
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: theme.colorScheme.primary,
       title: Text(
         settings.title,
-        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+        style: TextStyle(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: theme.colorScheme.onPrimary,
+        ),
       ),
-      actions: settings.actions,
+      actionsIconTheme: IconThemeData(color: theme.colorScheme.onPrimary),
+      actions: settings.actions.isEmpty
+          ? null
+          : [...settings.actions, const SizedBox(width: 16.0)],
     );
   }
 

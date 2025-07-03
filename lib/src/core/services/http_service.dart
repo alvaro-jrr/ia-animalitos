@@ -12,12 +12,14 @@ class HttpService {
     required HttpMethod method,
     String? baseUrl,
     Map<String, String>? headers,
+    Map<String, String>? queryParameters,
     Object? body,
   }) async {
     // Build the URL.
     final url = Uri.https(
       baseUrl ?? FlavorSettings.instance.values.baseApiUrl,
       endpoint,
+      queryParameters,
     );
 
     final response = _executeRequest(
