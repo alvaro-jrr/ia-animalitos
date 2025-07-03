@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:intl/intl.dart';
-
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 
 class AnimalListItem extends StatelessWidget {
@@ -52,7 +50,7 @@ class AnimalListItem extends StatelessWidget {
           // Time of the result.
           Icon(Icons.schedule, size: 16.0),
           const SizedBox(width: 4.0),
-          Text(DateFormat.jm().format(animal.time)),
+          Text(animal.hour),
         ],
       ),
     );
