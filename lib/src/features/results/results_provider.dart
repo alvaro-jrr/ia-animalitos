@@ -17,18 +17,42 @@ class ResultsProvider extends ChangeNotifier {
   /// Wether is loading the results.
   bool isLoadingResults = false;
 
+  /// The dates of the results.
+  late ResultDates dates;
+
+  /// The selected date.
+  late DateTime selectedDate;
+
+  ResultsProvider() {
+    final now = DateTime.now();
+
+    selectedDate = now;
+    dates = (today: now, yesterday: now.copyWith(day: now.day - 1));
+  }
+
   /// Gets the lottery results.
   Future<void> getResults() async {
     isLoadingResults = true;
     notifyListeners();
 
     // Get the results from the API.
-    final response = await ResultsApi.getDayResults();
+    final response = await ResultsApi.getResults(
+      fromToday: selectedDate == dates.today,
+    );
 
     results = response?.results ?? [];
     lotteryHouses = response?.lotteryHouses ?? {};
 
     isLoadingResults = false;
     notifyListeners();
+  }
+
+  /// Selects the date.
+  void selectDate(DateTime date) {
+    selectedDate = date;
+    notifyListeners();
+
+    // Get the results from the API.
+    getResults();
   }
 }

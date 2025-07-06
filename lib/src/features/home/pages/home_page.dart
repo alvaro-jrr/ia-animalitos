@@ -7,6 +7,7 @@ import 'package:ai_animals_lottery/src/features/home/widgets/home_bottom_navigat
 import 'package:ai_animals_lottery/src/features/predictions/pages/predictions_page.dart';
 import 'package:ai_animals_lottery/src/features/results/pages/results_page.dart';
 import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
+import 'package:ai_animals_lottery/src/features/results/widgets/select_results_date_popup.dart';
 import 'package:ai_animals_lottery/src/features/statistics/pages/statistics_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,7 +59,10 @@ class _HomePageState extends State<HomePage> {
   HomeAppBarSettings _getAppBarSettingsByIndex(int index) {
     /// Results.
     if (index == 0) {
-      return HomeAppBarSettings(title: localization.results);
+      return HomeAppBarSettings(
+        title: localization.results,
+        actions: [const SelectResultsDatePopup()],
+      );
     }
 
     /// Predictions.
