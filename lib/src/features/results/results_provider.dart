@@ -11,8 +11,8 @@ class ResultsProvider extends ChangeNotifier {
   /// The lottery houses.
   Map<String, LotteryHouse> lotteryHouses = {};
 
-  /// The results.
-  List<AnimalResult> results = [];
+  /// The results by date.
+  Map<DateTime, List<AnimalResult>> resultsByDate = {};
 
   /// Wether is loading the results.
   bool isLoadingResults = false;
@@ -24,7 +24,7 @@ class ResultsProvider extends ChangeNotifier {
   late DateTime selectedDate;
 
   ResultsProvider() {
-    final now = DateTime.now();
+    final now = DateUtils.dateOnly(DateTime.now());
 
     selectedDate = now;
     dates = (today: now, yesterday: now.copyWith(day: now.day - 1));
@@ -40,7 +40,7 @@ class ResultsProvider extends ChangeNotifier {
       fromToday: selectedDate == dates.today,
     );
 
-    results = response?.results ?? [];
+    resultsByDate[selectedDate] = response?.results ?? [];
     lotteryHouses = response?.lotteryHouses ?? {};
 
     isLoadingResults = false;
