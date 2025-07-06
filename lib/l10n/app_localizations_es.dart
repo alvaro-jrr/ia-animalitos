@@ -34,4 +34,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onStandBy => 'En espera';
+
+  @override
+  String get matches => 'Aciertos';
+
+  @override
+  String lastDays(num days) {
+    return 'Últimos $days días';
+  }
 }

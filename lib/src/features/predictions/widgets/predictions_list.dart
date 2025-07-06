@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+
+import 'package:skeletonizer/skeletonizer.dart';
+
+import 'package:ai_animals_lottery/src/features/predictions/models/prediction.dart';
+import 'package:ai_animals_lottery/src/features/predictions/widgets/prediction_item.dart';
+
+class PredictionsList extends StatelessWidget {
+  /// The predictions.
+  final List<Prediction> predictions;
+
+  const PredictionsList({super.key, required this.predictions});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      padding: const EdgeInsets.all(16.0),
+      itemCount: predictions.length,
+      itemBuilder: (context, index) {
+        return PredictionItem(prediction: predictions[index]);
+      },
+      separatorBuilder: (context, index) {
+        return const SizedBox(height: 16.0);
+      },
+    );
+  }
+
+  /// Returns a skeleton of the predictions list.
+  static Widget skeleton({required int count}) {
+    final predictions = List.generate(
+      count,
+      (index) => Prediction(
+        date: DateTime.now(),
+        lotteryHouse: 'lotteryHouse',
+        animalNumber: 1,
+        animal: 'animal',
+        isWinner: false,
+        lastSevenDays: 0,
+        lastFifteenDays: 0,
+        lastThirtyDays: 0,
+      ),
+    );
+
+    return Skeletonizer(child: PredictionsList(predictions: predictions));
+  }
+}

@@ -8,5 +8,14 @@
   "resultsNotFound": "No se encontraron resultados",
   "retry": "Reintentar",
   "selectResultsDate": "Seleccionar fecha de resultados",
-  "onStandBy": "En espera"
+  "onStandBy": "En espera",
+  "matches": "Aciertos",
+  "lastDays": "Últimos {days} días",
+  "@lastDays": {
+    "placeholders": {
+      "days": {
+        "type": "num"
+      }
+    }
+  }
 }

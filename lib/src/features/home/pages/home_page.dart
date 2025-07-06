@@ -5,6 +5,7 @@ import 'package:ai_animals_lottery/src/di.dart';
 import 'package:ai_animals_lottery/src/features/home/widgets/home_app_bar.dart';
 import 'package:ai_animals_lottery/src/features/home/widgets/home_bottom_navigation_bar.dart';
 import 'package:ai_animals_lottery/src/features/predictions/pages/predictions_page.dart';
+import 'package:ai_animals_lottery/src/features/predictions/predictions_provider.dart';
 import 'package:ai_animals_lottery/src/features/results/pages/results_page.dart';
 import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/select_results_date_popup.dart';
@@ -46,11 +47,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: HomeBottomNavigationBar(
         selectedIndex: _currentIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onDestinationSelected: _onDestinationSelected,
       ),
     );
   }
@@ -72,5 +69,17 @@ class _HomePageState extends State<HomePage> {
 
     /// Statistics.
     return HomeAppBarSettings(title: localization.statistics);
+  }
+
+  /// Handles the destination selected.
+  void _onDestinationSelected(int index) {
+    // Get the predictions.
+    if (index == 1) {
+      di.get<PredictionsProvider>().getPredictions();
+    }
+
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }
