@@ -40,8 +40,10 @@ class ResultsProvider extends ChangeNotifier {
       fromToday: selectedDate == dates.today,
     );
 
-    resultsByDate[selectedDate] = response?.results ?? [];
-    lotteryHouses = response?.lotteryHouses ?? {};
+    if (response != null) {
+      resultsByDate[selectedDate] = response.results;
+      lotteryHouses = response.lotteryHouses;
+    }
 
     isLoadingResults = false;
     notifyListeners();
@@ -49,6 +51,9 @@ class ResultsProvider extends ChangeNotifier {
 
   /// Selects the date.
   void selectDate(DateTime date) {
+    // If the date is the same as the selected date, do nothing.
+    if (date == selectedDate) return;
+
     selectedDate = date;
     notifyListeners();
 
