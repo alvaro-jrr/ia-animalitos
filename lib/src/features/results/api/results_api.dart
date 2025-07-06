@@ -5,11 +5,11 @@ import 'package:ai_animals_lottery/src/features/results/models/day_results.dart'
 
 class ResultsApi {
   /// Gets the results of the day.
-  static Future<DayResults?> getDayResults() async {
+  static Future<DayResults?> getResults({bool fromToday = true}) async {
     final response = await HttpService.request(
       '/api/api_animalitos.php',
       method: HttpMethod.get,
-      queryParameters: {'tipo': '3'},
+      queryParameters: {'tipo': '3', if (!fromToday) 'dia': '2'},
       headers: {'Content-Type': 'application/json'},
     );
 

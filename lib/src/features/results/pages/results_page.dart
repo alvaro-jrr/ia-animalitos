@@ -18,7 +18,7 @@ class ResultsPage extends StatelessWidget {
           ({List<AnimalResult> results, bool isLoadingResults})
         >(
           (provider) => (
-            results: provider.results,
+            results: provider.resultsByDate[provider.selectedDate] ?? [],
             isLoadingResults: provider.isLoadingResults,
           ),
         );
