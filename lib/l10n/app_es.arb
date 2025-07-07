@@ -17,5 +17,13 @@
         "type": "num"
       }
     }
+  },
+  "animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn": "Animales con mayores probabilidades estadísticas de salir beneficiados en sorteos del día {date}",
+  "@animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   }
 }

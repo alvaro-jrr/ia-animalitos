@@ -42,4 +42,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String lastDays(num days) {
     return 'Last $days days';
   }
+
+  @override
+  String animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn(
+    String date,
+  ) {
+    return 'Animals with higher statistical probabilities of benefiting in drawings on $date';
+  }
 }

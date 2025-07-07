@@ -6,23 +6,25 @@ import 'package:ai_animals_lottery/src/core/models/animal.dart';
 import 'package:ai_animals_lottery/src/features/predictions/models/prediction.dart';
 import 'package:ai_animals_lottery/src/features/predictions/widgets/prediction_item.dart';
 
-class PredictionsList extends StatelessWidget {
+class SliverPredictionsList extends StatelessWidget {
   /// The predictions.
   final List<Prediction> predictions;
 
-  const PredictionsList({super.key, required this.predictions});
+  const SliverPredictionsList({super.key, required this.predictions});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return SliverPadding(
       padding: const EdgeInsets.all(16.0),
-      itemCount: predictions.length,
-      itemBuilder: (context, index) {
-        return PredictionItem(prediction: predictions[index]);
-      },
-      separatorBuilder: (context, index) {
-        return const SizedBox(height: 16.0);
-      },
+      sliver: SliverList.separated(
+        itemCount: predictions.length,
+        itemBuilder: (context, index) {
+          return PredictionItem(prediction: predictions[index]);
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(height: 16.0);
+        },
+      ),
     );
   }
 
@@ -46,6 +48,8 @@ class PredictionsList extends StatelessWidget {
       ),
     );
 
-    return Skeletonizer(child: PredictionsList(predictions: predictions));
+    return SliverSkeletonizer(
+      child: SliverPredictionsList(predictions: predictions),
+    );
   }
 }

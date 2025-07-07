@@ -19,9 +19,12 @@ class AnimalImage extends StatelessWidget {
     final url = animal?.imageUrl.trim() ?? '';
     final iconSize = size / 2;
 
-    final defaultImage = animal == null
-        ? Icon(Icons.hourglass_empty, size: iconSize)
-        : Icon(Icons.pets, size: iconSize);
+    final defaultImage = SizedBox.square(
+      dimension: size,
+      child: animal == null
+          ? Icon(Icons.hourglass_empty, size: iconSize)
+          : Icon(Icons.pets, size: iconSize),
+    );
 
     if (url.isEmpty) return defaultImage;
 

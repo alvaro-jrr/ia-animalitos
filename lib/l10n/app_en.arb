@@ -17,5 +17,13 @@
         "type": "num"
       }
     }
+  },
+  "animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn": "Animals with higher statistical probabilities of benefiting in drawings on {date}",
+  "@animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   }
 }

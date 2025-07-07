@@ -163,6 +163,14 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Últimos {days} días'**
   String lastDays(num days);
+
+  /// No description provided for @animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn.
+  ///
+  /// In es, this message translates to:
+  /// **'Animales con mayores probabilidades estadísticas de salir beneficiados en sorteos del día {date}'**
+  String animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn(
+    String date,
+  );
 }
 
 class _AppLocalizationsDelegate
