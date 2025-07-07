@@ -59,6 +59,7 @@ class PredictionItem extends StatelessWidget {
           ),
           const SizedBox(width: 16.0),
           Container(
+            width: 100.0,
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
@@ -66,13 +67,17 @@ class PredictionItem extends StatelessWidget {
                   ? theme.colorScheme.primary.withAlpha(50)
                   : null,
             ),
-            // width: 80.0,
             child: Column(
               children: [
                 AnimalImage(animal: prediction.animal, size: 64.0),
                 Text(
                   prediction.animal.name,
-                  style: TextStyle(fontWeight: FontWeight.w700),
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
