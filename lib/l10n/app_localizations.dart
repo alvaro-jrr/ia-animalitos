@@ -151,6 +151,26 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'En espera'**
   String get onStandBy;
+
+  /// No description provided for @matches.
+  ///
+  /// In es, this message translates to:
+  /// **'Aciertos'**
+  String get matches;
+
+  /// No description provided for @lastDays.
+  ///
+  /// In es, this message translates to:
+  /// **'Últimos {days} días'**
+  String lastDays(num days);
+
+  /// No description provided for @animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn.
+  ///
+  /// In es, this message translates to:
+  /// **'Animales con mayores probabilidades estadísticas de salir beneficiados en sorteos del día {date}'**
+  String animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn(
+    String date,
+  );
 }
 
 class _AppLocalizationsDelegate

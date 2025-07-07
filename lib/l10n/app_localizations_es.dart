@@ -34,4 +34,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onStandBy => 'En espera';
+
+  @override
+  String get matches => 'Aciertos';
+
+  @override
+  String lastDays(num days) {
+    return 'Últimos $days días';
+  }
+
+  @override
+  String animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn(
+    String date,
+  ) {
+    return 'Animales con mayores probabilidades estadísticas de salir beneficiados en sorteos del día $date';
+  }
 }

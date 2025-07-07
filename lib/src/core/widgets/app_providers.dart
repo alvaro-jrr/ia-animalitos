@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ai_animals_lottery/src/di.dart';
+import 'package:ai_animals_lottery/src/features/predictions/predictions_provider.dart';
 import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
 
 class AppProviders extends StatelessWidget {
@@ -16,6 +17,9 @@ class AppProviders extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => di.get<ResultsProvider>()),
+        ChangeNotifierProvider(
+          create: (context) => di.get<PredictionsProvider>(),
+        ),
       ],
       child: child,
     );
