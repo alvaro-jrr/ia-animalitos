@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:skeletonizer/skeletonizer.dart';
 
+import 'package:ai_animals_lottery/src/core/models/animal.dart';
 import 'package:ai_animals_lottery/src/features/predictions/models/prediction.dart';
 import 'package:ai_animals_lottery/src/features/predictions/widgets/prediction_item.dart';
 
@@ -32,8 +33,12 @@ class PredictionsList extends StatelessWidget {
       (index) => Prediction(
         date: DateTime.now(),
         lotteryHouse: 'lotteryHouse',
-        animalNumber: 1,
-        animal: 'animal',
+        animal: Animal(
+          id: '1',
+          lotteryHouseId: '1',
+          name: 'animal',
+          imageUrl: 'imageUrl',
+        ),
         isWinner: false,
         lastSevenDays: 0,
         lastFifteenDays: 0,

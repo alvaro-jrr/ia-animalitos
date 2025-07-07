@@ -45,7 +45,7 @@ class ResultsList extends StatelessWidget {
           padding: groupEnd
               ? const EdgeInsets.only(bottom: 16.0)
               : EdgeInsets.zero,
-          child: AnimalListItem(animal: animal),
+          child: AnimalListItem(result: animal),
         );
       },
       sort: false,
@@ -56,14 +56,8 @@ class ResultsList extends StatelessWidget {
   static Widget skeleton({required int count}) {
     final results = List.generate(
       count,
-      (index) => AnimalResult(
-        lotteryHouseId: '1',
-        hour: '08:30 AM',
-        name: 'name',
-        imagePath: '',
-        imageUrl: '',
-        number: 1,
-      ),
+      (index) =>
+          AnimalResult(lotteryHouseId: '1', hour: '08:30 AM', animal: null),
     );
 
     return Skeletonizer(child: ResultsList(results: results));

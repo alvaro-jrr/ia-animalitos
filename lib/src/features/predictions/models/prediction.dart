@@ -1,3 +1,5 @@
+import 'package:ai_animals_lottery/src/core/models/animal.dart';
+
 class Prediction {
   /// The date of the prediction.
   final DateTime date;
@@ -5,11 +7,8 @@ class Prediction {
   /// The lottery house of the prediction.
   final String lotteryHouse;
 
-  /// The animal id of the prediction.
-  final int animalNumber;
-
-  /// The animal of the prediction.
-  final String animal;
+  /// The predicted [animal].
+  final Animal animal;
 
   /// Wether the prediction is a winner.
   final bool isWinner;
@@ -26,7 +25,6 @@ class Prediction {
   const Prediction({
     required this.date,
     required this.lotteryHouse,
-    required this.animalNumber,
     required this.animal,
     required this.isWinner,
     required this.lastSevenDays,
@@ -39,8 +37,7 @@ class Prediction {
     return Prediction(
       date: DateTime.parse(json['fecha']),
       lotteryHouse: json['desc_loteria'],
-      animalNumber: int.parse(json['id_animal']),
-      animal: json['desc_animal'],
+      animal: Animal.fromJson(json),
       isWinner: json['salio'] != null,
       lastSevenDays: json['d7'] is String ? int.tryParse(json['d7']) ?? 0 : 0,
       lastFifteenDays: json['d15'] is String
@@ -59,7 +56,6 @@ class Prediction {
     return other is Prediction &&
         other.date == date &&
         other.lotteryHouse == lotteryHouse &&
-        other.animalNumber == animalNumber &&
         other.animal == animal &&
         other.isWinner == isWinner &&
         other.lastSevenDays == lastSevenDays &&
@@ -72,7 +68,6 @@ class Prediction {
     return Object.hash(
       date,
       lotteryHouse,
-      animalNumber,
       animal,
       isWinner,
       lastSevenDays,

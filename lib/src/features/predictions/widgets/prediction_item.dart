@@ -21,28 +21,52 @@ class PredictionItem extends StatelessWidget {
           color: theme.colorScheme.outlineVariant.withValues(alpha: 0.5),
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          // Lottery house.
-          Text(
-            prediction.lotteryHouse,
-            style: TextStyle(fontWeight: FontWeight.w700),
-          ),
-          const SizedBox(height: 8.0),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Lottery house.
+                Text(
+                  prediction.lotteryHouse,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 8.0),
 
-          // The number of successful predictions in the last 7, 15 and 30 days.
-          Text(
-            localization.matches,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: theme.colorScheme.primary,
+                // The number of successful predictions in the last 7, 15 and 30 days.
+                Text(
+                  localization.matches,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                Text(
+                  '${localization.lastDays(7)}: ${prediction.lastSevenDays}',
+                ),
+                Text(
+                  '${localization.lastDays(15)}: ${prediction.lastFifteenDays}',
+                ),
+                Text(
+                  '${localization.lastDays(30)}: ${prediction.lastThirtyDays}',
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 4.0),
-          Text('${localization.lastDays(7)}: ${prediction.lastSevenDays}'),
-          Text('${localization.lastDays(15)}: ${prediction.lastFifteenDays}'),
-          Text('${localization.lastDays(30)}: ${prediction.lastThirtyDays}'),
+          const SizedBox(width: 16.0),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                prediction.animal.name,
+                style: TextStyle(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 8.0),
+              Text(prediction.animal.id),
+            ],
+          ),
         ],
       ),
     );
