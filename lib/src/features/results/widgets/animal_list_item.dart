@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
+import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
 import 'package:ai_animals_lottery/src/core/widgets/animal_image.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 
@@ -12,16 +13,14 @@ class AnimalListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = AppTheme.of(context);
     final animal = result.animal;
 
     return ListTile(
       contentPadding: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
-        side: BorderSide(
-          color: theme.colorScheme.outlineVariant.withValues(alpha: 0.5),
-        ),
+        side: BorderSide(color: theme.colorScheme.border),
       ),
       leading: AnimalImage(animal: animal, size: 64.0),
       title: Padding(
@@ -41,9 +40,7 @@ class AnimalListItem extends StatelessWidget {
                 vertical: 2.0,
               ),
               decoration: ShapeDecoration(
-                color: theme.colorScheme.primaryContainer.withValues(
-                  alpha: 0.25,
-                ),
+                color: theme.colorScheme.secondary,
                 shape: StadiumBorder(),
               ),
               child: Text(
