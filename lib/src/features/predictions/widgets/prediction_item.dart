@@ -62,9 +62,7 @@ class PredictionItem extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: prediction.isWinner
-                  ? theme.colorScheme.primary.withAlpha(50)
-                  : null,
+              color: prediction.isWinner ? theme.colorScheme.accent : null,
             ),
             child: Column(
               children: [

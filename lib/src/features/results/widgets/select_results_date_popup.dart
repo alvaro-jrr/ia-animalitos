@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
-import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
 import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
 
 class SelectResultsDatePopup extends StatelessWidget {
@@ -12,7 +11,7 @@ class SelectResultsDatePopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final iconTheme = IconTheme.of(context);
 
     return Selector<
       ResultsProvider,
@@ -48,7 +47,7 @@ class SelectResultsDatePopup extends StatelessWidget {
                 '${isToday ? localization.today : localization.yesterday}, ${DateFormat.Md().format(selectedDate)}',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  color: theme.colorScheme.primaryForeground,
+                  color: iconTheme.color,
                 ),
               ),
               const SizedBox(width: 8.0),

@@ -48,4 +48,10 @@ class AppThemeData {
       ),
     );
   }
+
+  /// Wether is light mode.
+  bool get isLight => brightness == Brightness.light;
+
+  /// Wether is dark mode.
+  bool get isDark => brightness == Brightness.dark;
 }

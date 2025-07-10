@@ -40,18 +40,18 @@ class AnimalListItem extends StatelessWidget {
                 vertical: 2.0,
               ),
               decoration: ShapeDecoration(
-                color: theme.colorScheme.secondary,
+                color: theme.colorScheme.accent,
                 shape: StadiumBorder(),
               ),
               child: Text(
-                '#${animal.id}',
+                animal.id,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  color: theme.colorScheme.primary,
+                  color: theme.colorScheme.accentForeground,
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
+            const SizedBox(width: 12.0),
           ],
           // Time of the result.
           Icon(Icons.schedule, size: 16.0),
