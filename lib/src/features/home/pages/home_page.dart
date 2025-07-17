@@ -9,7 +9,6 @@ import 'package:ai_animals_lottery/src/features/predictions/predictions_provider
 import 'package:ai_animals_lottery/src/features/results/pages/results_page.dart';
 import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/select_results_date_popup.dart';
-import 'package:ai_animals_lottery/src/features/statistics/pages/statistics_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,11 +38,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: IndexedStack(
         index: _currentIndex,
-        children: [
-          const ResultsPage(),
-          const PredictionsPage(),
-          const StatisticsPage(),
-        ],
+        children: [const ResultsPage(), const PredictionsPage()],
       ),
       bottomNavigationBar: HomeBottomNavigationBar(
         selectedIndex: _currentIndex,

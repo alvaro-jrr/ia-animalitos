@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:ai_animals_lottery/src/features/results/api/results_api.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
-import 'package:ai_animals_lottery/src/features/results/models/lottery_house.dart';
 
 /// The dates of the results.
 typedef ResultDates = ({DateTime today, DateTime yesterday});
 
 class ResultsProvider extends ChangeNotifier {
-  /// The lottery houses.
-  Map<String, LotteryHouse> lotteryHouses = {};
-
   /// The results by date.
   Map<DateTime, List<AnimalResult>> resultsByDate = {};
 
@@ -42,7 +38,6 @@ class ResultsProvider extends ChangeNotifier {
 
     if (response != null) {
       resultsByDate[selectedDate] = response.results;
-      lotteryHouses = response.lotteryHouses;
     }
 
     isLoadingResults = false;

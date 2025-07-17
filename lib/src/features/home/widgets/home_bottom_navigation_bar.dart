@@ -53,11 +53,6 @@ class HomeBottomNavigationBar extends StatelessWidget {
             selectedIcon: Icon(Icons.leaderboard, color: selectedColor),
             label: localization.predictions,
           ),
-          NavigationDestination(
-            icon: Icon(Icons.analytics_outlined, color: unselectedColor),
-            selectedIcon: Icon(Icons.analytics, color: selectedColor),
-            label: localization.statistics,
-          ),
         ],
       ),
     );
