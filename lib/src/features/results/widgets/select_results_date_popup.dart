@@ -11,7 +11,7 @@ class SelectResultsDatePopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final iconTheme = IconTheme.of(context);
 
     return Selector<
       ResultsProvider,
@@ -46,8 +46,8 @@ class SelectResultsDatePopup extends StatelessWidget {
               Text(
                 '${isToday ? localization.today : localization.yesterday}, ${DateFormat.Md().format(selectedDate)}',
                 style: TextStyle(
-                  color: theme.colorScheme.onPrimary,
                   fontWeight: FontWeight.w500,
+                  color: iconTheme.color,
                 ),
               ),
               const SizedBox(width: 8.0),

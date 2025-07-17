@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
+import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
 import 'package:ai_animals_lottery/src/core/widgets/animal_image.dart';
 import 'package:ai_animals_lottery/src/features/predictions/models/prediction.dart';
 
@@ -12,15 +13,13 @@ class PredictionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = AppTheme.of(context);
 
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(
-          color: theme.colorScheme.outlineVariant.withValues(alpha: 0.5),
-        ),
+        border: Border.all(color: theme.colorScheme.border),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,9 +62,7 @@ class PredictionItem extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: prediction.isWinner
-                  ? theme.colorScheme.primary.withAlpha(50)
-                  : null,
+              color: prediction.isWinner ? theme.colorScheme.accent : null,
             ),
             child: Column(
               children: [

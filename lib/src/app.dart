@@ -1,31 +1,52 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:provider/provider.dart';
 
 import 'package:ai_animals_lottery/l10n/app_localizations.dart';
 import 'package:ai_animals_lottery/src/core/services/localization_service.dart';
 import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
-import 'package:ai_animals_lottery/src/core/widgets/app_providers.dart';
+import 'package:ai_animals_lottery/src/core/styles/app_theme_provider.dart';
 import 'package:ai_animals_lottery/src/features/home/pages/home_page.dart';
 
 /// The localization for the app.
 final localization = LocalizationService.instance.localization;
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({super.key});
 
   @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    super.didChangePlatformBrightness();
+
+    context.read<AppThemeProvider>().toggleTheme();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return AppProviders(
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        localeResolutionCallback: _localeResolutionCallback,
-        theme: AppTheme.light,
-        darkTheme: AppTheme.dark,
-        home: const HomePage(),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localeResolutionCallback: _localeResolutionCallback,
+      theme: AppTheme.light.themeData,
+      darkTheme: AppTheme.dark.themeData,
+      themeMode: context.select<AppThemeProvider, ThemeMode>(
+        (provider) => provider.themeMode,
       ),
+      home: const HomePage(),
     );
   }
 

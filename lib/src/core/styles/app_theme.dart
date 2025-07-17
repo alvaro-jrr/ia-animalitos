@@ -1,38 +1,28 @@
 import 'package:flutter/material.dart';
 
-import 'package:ai_animals_lottery/src/core/styles/app_colors.dart';
+import 'package:provider/provider.dart';
+
+import 'package:ai_animals_lottery/src/core/styles/app_theme_data.dart';
+import 'package:ai_animals_lottery/src/core/styles/app_theme_provider.dart';
 
 class AppTheme {
   /// The light theme.
-  static final light = ThemeData(
-    fontFamily: 'Plus Jakarta Sans',
-    scaffoldBackgroundColor: Colors.white,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primary,
-      brightness: Brightness.light,
-    ),
-    dividerColor: Colors.grey.shade200,
-    popupMenuTheme: PopupMenuThemeData(
-      color: Colors.white,
-      elevation: 0,
-      position: PopupMenuPosition.under,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.grey.shade400),
-        borderRadius: BorderRadius.circular(4.0),
-      ),
-    ),
-  );
+  static final light = AppThemeData.light();
 
   /// The dark theme.
-  static final dark = ThemeData(
-    fontFamily: 'Plus Jakarta Sans',
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primary,
-      brightness: Brightness.dark,
-    ),
-    popupMenuTheme: PopupMenuThemeData(
-      elevation: 0,
-      position: PopupMenuPosition.under,
-    ),
-  );
+  static final dark = AppThemeData.dark();
+
+  /// Returns the [AppThemeData] from the [brightness].
+  static AppThemeData fromBrightness(Brightness brightness) {
+    return brightness == Brightness.light ? light : dark;
+  }
+
+  /// Returns the [AppThemeData] from the [context].
+  static AppThemeData of(BuildContext context) {
+    final brightness = context.select<AppThemeProvider, Brightness>(
+      (provider) => provider.brightness,
+    );
+
+    return AppTheme.fromBrightness(brightness);
+  }
 }

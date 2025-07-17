@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
+import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
 
 class HomeBottomNavigationBar extends StatelessWidget {
   /// The selected index.
@@ -17,17 +18,14 @@ class HomeBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = AppTheme.of(context);
     final selectedColor = theme.colorScheme.primary;
-    final unselectedColor = theme.colorScheme.secondary.withValues(alpha: 0.8);
+    final unselectedColor = theme.colorScheme.mutedForeground;
 
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(
-            color: theme.colorScheme.outlineVariant.withValues(alpha: 0.5),
-            width: 1.0,
-          ),
+          top: BorderSide(color: theme.colorScheme.border, width: 1.0),
         ),
       ),
       child: NavigationBar(
@@ -35,7 +33,6 @@ class HomeBottomNavigationBar extends StatelessWidget {
         selectedIndex: selectedIndex,
         onDestinationSelected: onDestinationSelected,
         indicatorColor: Colors.transparent,
-        backgroundColor: theme.scaffoldBackgroundColor,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {
           return TextStyle(
             fontSize: 12.0,
