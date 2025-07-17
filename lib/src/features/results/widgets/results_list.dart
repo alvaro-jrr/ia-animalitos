@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 import 'package:ai_animals_lottery/src/features/results/models/lottery_house.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/animal_list_item.dart';
+import 'package:ai_animals_lottery/src/features/results/widgets/result_list_header.dart';
 
 class ResultsList extends StatelessWidget {
   /// The results.
@@ -18,6 +20,8 @@ class ResultsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
+
     return GroupedListView<AnimalResult, String>(
       padding: const EdgeInsets.all(16.0),
       physics: physics,
@@ -27,21 +31,16 @@ class ResultsList extends StatelessWidget {
       floatingHeader: true,
       useStickyGroupSeparators: true,
       groupStickyHeaderBuilder: (result) {
-        return Container(
-          width: double.infinity,
-          color: Colors.white,
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            result.lotteryHouse.name,
-            textAlign: TextAlign.left,
-            style: TextStyle(fontWeight: FontWeight.w600),
-          ),
+        return ResultListHeader(
+          backgroundColor: theme.colorScheme.background,
+          lotteryHouse: result.lotteryHouse,
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         );
       },
       groupHeaderBuilder: (result) {
-        return Text(
-          result.lotteryHouse.name,
-          style: TextStyle(fontWeight: FontWeight.w600),
+        return ResultListHeader(
+          lotteryHouse: result.lotteryHouse,
+          padding: const EdgeInsets.only(bottom: 12.0),
         );
       },
       groupItemBuilder: (context, animal, groupStart, groupEnd) {
