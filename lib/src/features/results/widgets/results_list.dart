@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:grouped_list/grouped_list.dart';
-import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 import 'package:ai_animals_lottery/src/features/results/models/lottery_house.dart';
-import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/animal_list_item.dart';
 
 class ResultsList extends StatelessWidget {
@@ -25,19 +23,25 @@ class ResultsList extends StatelessWidget {
       physics: physics,
       elements: results,
       separator: const SizedBox(height: 8.0),
-      groupBy: (animal) => animal.lotteryHouseId,
-      groupSeparatorBuilder: (lotteryHouseId) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 12.0),
-          child: Selector<ResultsProvider, LotteryHouse?>(
-            selector: (_, p) => p.lotteryHouses[lotteryHouseId],
-            builder: (context, lotteryHouse, child) {
-              return Text(
-                lotteryHouse?.name ?? '',
-                style: TextStyle(fontWeight: FontWeight.w600),
-              );
-            },
+      groupBy: (animal) => animal.lotteryHouse.id,
+      floatingHeader: true,
+      useStickyGroupSeparators: true,
+      groupStickyHeaderBuilder: (result) {
+        return Container(
+          width: double.infinity,
+          color: Colors.white,
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            result.lotteryHouse.name,
+            textAlign: TextAlign.left,
+            style: TextStyle(fontWeight: FontWeight.w600),
           ),
+        );
+      },
+      groupHeaderBuilder: (result) {
+        return Text(
+          result.lotteryHouse.name,
+          style: TextStyle(fontWeight: FontWeight.w600),
         );
       },
       groupItemBuilder: (context, animal, groupStart, groupEnd) {
@@ -56,8 +60,11 @@ class ResultsList extends StatelessWidget {
   static Widget skeleton({required int count}) {
     final results = List.generate(
       count,
-      (index) =>
-          AnimalResult(lotteryHouseId: '1', hour: '08:30 AM', animal: null),
+      (index) => AnimalResult(
+        lotteryHouse: LotteryHouse(id: '1', name: 'Test'),
+        hour: '08:30 AM',
+        animal: null,
+      ),
     );
 
     return Skeletonizer(child: ResultsList(results: results));
