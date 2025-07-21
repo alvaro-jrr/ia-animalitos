@@ -55,7 +55,7 @@ class PredictionsPage extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0).copyWith(bottom: 4.0),
               child: Skeletonizer(
                 enabled: isLoadingPredictions,
                 child: Text(
