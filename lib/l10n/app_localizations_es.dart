@@ -49,4 +49,10 @@ class AppLocalizationsEs extends AppLocalizations {
   ) {
     return 'Animales con mayores probabilidades estadísticas de salir beneficiados en sorteos del día $date';
   }
+
+  @override
+  String get noResultsAvailableYet => 'No hay resultados disponibles aún';
+
+  @override
+  String get updateResults => 'Actualizar resultados';
 }

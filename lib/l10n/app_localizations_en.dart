@@ -49,4 +49,10 @@ class AppLocalizationsEn extends AppLocalizations {
   ) {
     return 'Animals with higher statistical probabilities of benefiting in drawings on $date';
   }
+
+  @override
+  String get noResultsAvailableYet => 'No results available yet';
+
+  @override
+  String get updateResults => 'Update results';
 }

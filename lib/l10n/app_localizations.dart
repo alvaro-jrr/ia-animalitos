@@ -171,6 +171,18 @@ abstract class AppLocalizations {
   String animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn(
     String date,
   );
+
+  /// No description provided for @noResultsAvailableYet.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay resultados disponibles aún'**
+  String get noResultsAvailableYet;
+
+  /// No description provided for @updateResults.
+  ///
+  /// In es, this message translates to:
+  /// **'Actualizar resultados'**
+  String get updateResults;
 }
 
 class _AppLocalizationsDelegate

@@ -37,7 +37,9 @@ class ResultsProvider extends ChangeNotifier {
     );
 
     if (response != null) {
-      resultsByDate[selectedDate] = response.results;
+      resultsByDate[selectedDate] = response.results
+          .where((result) => result.animal != null)
+          .toList();
     }
 
     isLoadingResults = false;
