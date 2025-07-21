@@ -43,13 +43,13 @@ android {
     productFlavors {
         create("development") {
             dimension = "default"
-            manifestPlaceholders["appName"] = "IA Animalitos [DEV]"
+            manifestPlaceholders["appName"] = "iAnimalitos [DEV]"
             applicationIdSuffix = ".dev"
         }
 
         create("production") {
             dimension = "default"
-            manifestPlaceholders["appName"] = "IA Animalitos"
+            manifestPlaceholders["appName"] = "iAnimalitos"
         }
     }
 }

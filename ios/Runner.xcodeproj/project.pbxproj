@@ -369,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = VKA2JBDRH3;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "IA Animalitos [DEV]";
+				FLAVOR_APP_NAME = "iAnimalitos [DEV]";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,7 +464,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = VKA2JBDRH3;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "IA Animalitos [DEV]";
+				FLAVOR_APP_NAME = "iAnimalitos [DEV]";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -554,7 +554,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = VKA2JBDRH3;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "IA Animalitos [DEV]";
+				FLAVOR_APP_NAME = "iAnimalitos [DEV]";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -649,7 +649,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = VKA2JBDRH3;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "IA Animalitos";
+				FLAVOR_APP_NAME = "iAnimalitos";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -744,7 +744,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = VKA2JBDRH3;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "IA Animalitos";
+				FLAVOR_APP_NAME = "iAnimalitos";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -834,7 +834,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = VKA2JBDRH3;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "IA Animalitos";
+				FLAVOR_APP_NAME = "iAnimalitos";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
