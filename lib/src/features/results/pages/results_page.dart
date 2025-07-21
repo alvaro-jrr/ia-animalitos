@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:ai_animals_lottery/src/app.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
+import 'package:ai_animals_lottery/src/features/results/widgets/empty_results.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/results_list.dart';
 
 class ResultsPage extends StatelessWidget {
@@ -15,32 +16,39 @@ class ResultsPage extends StatelessWidget {
     final data = context
         .select<
           ResultsProvider,
-          ({List<AnimalResult> results, bool isLoadingResults})
+          ({List<AnimalResult>? results, bool isLoadingResults})
         >(
           (provider) => (
-            results: provider.resultsByDate[provider.selectedDate] ?? [],
+            results: provider.resultsByDate[provider.selectedDate],
             isLoadingResults: provider.isLoadingResults,
           ),
         );
 
+    final results = data.results;
+
     // Handle loading.
-    if (data.isLoadingResults && data.results.isEmpty) {
+    if (data.isLoadingResults && (results == null || results.isEmpty)) {
       return ResultsList.skeleton(count: 10);
     }
 
-    // Handle empty results.
-    if (data.results.isEmpty) {
+    // Handle no results.
+    if (results == null) {
       return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(localization.resultsNotFound),
-            const SizedBox(height: 16),
-            FilledButton(
-              onPressed: () => _onRetry(context),
-              child: Text(localization.retry),
-            ),
-          ],
+        child: EmptyResults(
+          description: localization.resultsNotFound,
+          retryText: localization.retry,
+          onRetry: () => _onRetry(context),
+        ),
+      );
+    }
+
+    // Handle empty results.
+    if (results.isEmpty) {
+      return Center(
+        child: EmptyResults(
+          description: localization.noResultsAvailableYet,
+          retryText: localization.updateResults,
+          onRetry: () => _onRetry(context),
         ),
       );
     }
@@ -48,7 +56,7 @@ class ResultsPage extends StatelessWidget {
     return RefreshIndicator(
       onRefresh: () => _onRetry(context),
       child: ResultsList(
-        results: data.results,
+        results: results,
         // Allow the refresh to work when the list doesn't have enough items to scroll.
         physics: const AlwaysScrollableScrollPhysics(),
       ),

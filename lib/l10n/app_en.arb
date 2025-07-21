@@ -25,5 +25,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "noResultsAvailableYet": "No results available yet",
+  "updateResults": "Update results"
 }
