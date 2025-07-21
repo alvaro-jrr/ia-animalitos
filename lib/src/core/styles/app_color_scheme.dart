@@ -21,6 +21,7 @@ class AppColorScheme {
   final Color input;
   final Color ring;
   final Color selection;
+  final Color success;
 
   const AppColorScheme({
     required this.background,
@@ -43,6 +44,7 @@ class AppColorScheme {
     required this.input,
     required this.ring,
     required this.selection,
+    required this.success,
   });
 
   /// Returns a new [AppColorScheme] with the given properties updated.
@@ -67,6 +69,7 @@ class AppColorScheme {
     Color? input,
     Color? ring,
     Color? selection,
+    Color? success,
   }) {
     return AppColorScheme(
       background: background ?? this.background,
@@ -90,6 +93,7 @@ class AppColorScheme {
       input: input ?? this.input,
       ring: ring ?? this.ring,
       selection: selection ?? this.selection,
+      success: success ?? this.success,
     );
   }
 
@@ -116,6 +120,7 @@ class AppColorScheme {
       input: const Color(0xffe2e8f0),
       ring: const Color(0xff2563eb),
       selection: const Color(0xFFB4D7FF),
+      success: const Color(0xFFe8f5e9),
     );
   }
 
@@ -142,6 +147,7 @@ class AppColorScheme {
       input: const Color(0xff1e293b),
       ring: const Color(0xff1d4ed8),
       selection: const Color(0xFF355172),
+      success: Color(0xFF57A773),
     );
   }
 
