@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ai_animals_lottery/src/app.dart';
 import 'package:ai_animals_lottery/src/di.dart';
 import 'package:ai_animals_lottery/src/features/home/widgets/home_app_bar.dart';
+import 'package:ai_animals_lottery/src/features/home/widgets/home_banner.dart';
 import 'package:ai_animals_lottery/src/features/home/widgets/home_bottom_navigation_bar.dart';
 import 'package:ai_animals_lottery/src/features/predictions/pages/predictions_page.dart';
 import 'package:ai_animals_lottery/src/features/predictions/predictions_provider.dart';
@@ -40,9 +41,15 @@ class _HomePageState extends State<HomePage> {
         index: _currentIndex,
         children: [const ResultsPage(), const PredictionsPage()],
       ),
-      bottomNavigationBar: HomeBottomNavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: _onDestinationSelected,
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const HomeBanner(),
+          HomeBottomNavigationBar(
+            selectedIndex: _currentIndex,
+            onDestinationSelected: _onDestinationSelected,
+          ),
+        ],
       ),
     );
   }
