@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:ai_animals_lottery/src/core/services/http_service.dart';
-import 'package:ai_animals_lottery/src/features/results/models/day_results.dart';
+import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 
 class ResultsApi {
   /// Gets the results of the day.
-  static Future<DayResults?> getResults({bool fromToday = true}) async {
+  static Future<List<AnimalResult>?> getResults({bool fromToday = true}) async {
     final response = await HttpService.request(
       '/api/api_animalitos.php',
       method: HttpMethod.get,
@@ -18,9 +18,11 @@ class ResultsApi {
     try {
       final jsonList = jsonDecode(response.body);
 
-      final dayResults = DayResults.fromJson(jsonList);
+      final results = (jsonList as List)
+          .map((e) => AnimalResult.fromJson(e))
+          .toList();
 
-      return dayResults;
+      return results;
     } catch (e) {
       return null;
     }

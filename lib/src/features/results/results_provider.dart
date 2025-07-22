@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:ai_animals_lottery/src/core/database/database_controller.dart';
+import 'package:ai_animals_lottery/src/di.dart';
 import 'package:ai_animals_lottery/src/features/results/api/results_api.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
 
@@ -39,15 +41,33 @@ class ResultsProvider extends ChangeNotifier {
     isLoadingResults = true;
     notifyListeners();
 
-    // Get the results from the API.
-    final response = await ResultsApi.getResults(
-      fromToday: selectedDate == dates.today,
+    final dbController = di.get<DatabaseController>();
+
+    // Get the results from the database.
+    final localResults = await dbController.animalResults.getResultsByDate(
+      selectedDate,
     );
 
+    if (localResults.isNotEmpty) {
+      resultsByDate[selectedDate] = localResults;
+      notifyListeners();
+    }
+
+    // Get the results from the API.
+    final response =
+        await ResultsApi.getResults(
+          fromToday: selectedDate == dates.today,
+        ).then((response) {
+          if (response == null) return null;
+
+          return response.where((result) => result.animal != null).toList();
+        });
+
     if (response != null) {
-      resultsByDate[selectedDate] = response.results
-          .where((result) => result.animal != null)
-          .toList();
+      resultsByDate[selectedDate] = response;
+
+      // Save the results to the database.
+      di.get<DatabaseController>().animalResults.insertResults(response);
     }
 
     isLoadingResults = false;

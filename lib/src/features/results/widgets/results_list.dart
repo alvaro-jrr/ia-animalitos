@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import 'package:ai_animals_lottery/src/core/models/lottery_house.dart';
 import 'package:ai_animals_lottery/src/core/styles/app_theme.dart';
 import 'package:ai_animals_lottery/src/features/results/models/animal_result.dart';
-import 'package:ai_animals_lottery/src/features/results/models/lottery_house.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/animal_list_item.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/result_list_header.dart';
 
@@ -57,9 +57,12 @@ class ResultsList extends StatelessWidget {
 
   /// Returns a skeleton of the results list.
   static Widget skeleton({required int count}) {
+    final date = DateTime.now();
+
     final results = List.generate(
       count,
       (index) => AnimalResult(
+        date: date,
         lotteryHouse: LotteryHouse(id: '1', name: 'Test'),
         hour: '08:30 AM',
         animal: null,

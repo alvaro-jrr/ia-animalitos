@@ -36,6 +36,11 @@ class Animal {
     );
   }
 
+  /// Converts this object to a JSON object.
+  Map<String, dynamic> toJson() {
+    return {'id_animal': id, 'id_loteria': lotteryHouseId, 'desc_animal': name};
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
