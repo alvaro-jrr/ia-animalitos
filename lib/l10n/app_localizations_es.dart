@@ -47,7 +47,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn(
     String date,
   ) {
-    return 'Animales con mayores probabilidades estadísticas de salir beneficiados en sorteos del día $date';
+    return 'Animalitos con mayores probabilidades estadísticas de salir beneficiados en sorteos del día $date';
   }
 
   @override

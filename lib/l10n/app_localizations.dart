@@ -167,7 +167,7 @@ abstract class AppLocalizations {
   /// No description provided for @animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn.
   ///
   /// In es, this message translates to:
-  /// **'Animales con mayores probabilidades estadísticas de salir beneficiados en sorteos del día {date}'**
+  /// **'Animalitos con mayores probabilidades estadísticas de salir beneficiados en sorteos del día {date}'**
   String animalsWithHigherStatisticalProbabilitiesOfBenefitingInDrawingsOn(
     String date,
   );
