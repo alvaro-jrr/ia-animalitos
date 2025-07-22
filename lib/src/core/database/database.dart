@@ -7,7 +7,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 
 import 'package:ai_animals_lottery/src/core/database/dao/animal_result_dao.dart';
+import 'package:ai_animals_lottery/src/core/database/dao/prediction_dao.dart';
 import 'package:ai_animals_lottery/src/core/database/entities/animal_result.dart';
+import 'package:ai_animals_lottery/src/core/database/entities/prediction.dart';
 
 part 'database.g.dart';
 
@@ -43,13 +45,14 @@ class AppDatabaseHelper {
   }
 }
 
-@Database(version: 1, entities: [AnimalResult])
+@Database(version: 1, entities: [AnimalResult, Prediction])
 abstract class AppDatabase extends FloorDatabase {
   AnimalResultDao get resultDao;
+  PredictionDao get predictionDao;
 
   /// Deletes the database.
   Future<void> clearAllTables() async {
-    const tables = ['AnimalResult'];
+    const tables = ['AnimalResult', 'Prediction'];
 
     for (final table in tables) {
       await database.execute('DELETE FROM $table');

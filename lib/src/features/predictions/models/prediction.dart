@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:ai_animals_lottery/src/core/database/entities/prediction.dart'
+    as entity;
 import 'package:ai_animals_lottery/src/core/models/animal.dart';
 
 class Prediction {
@@ -46,6 +50,32 @@ class Prediction {
       lastThirtyDays: json['d30'] is String
           ? int.tryParse(json['d30']) ?? 0
           : 0,
+    );
+  }
+
+  /// Returns an instance from the given [entity].
+  factory Prediction.fromEntity(entity.Prediction entity) {
+    return Prediction(
+      date: DateTime.parse(entity.date),
+      lotteryHouse: entity.lotteryHouse,
+      animal: Animal.fromJson(jsonDecode(entity.animal)),
+      isWinner: entity.isWinner,
+      lastSevenDays: entity.lastSevenDays,
+      lastFifteenDays: entity.lastFifteenDays,
+      lastThirtyDays: entity.lastThirtyDays,
+    );
+  }
+
+  /// Returns the [Prediction] entity.
+  entity.Prediction toEntity() {
+    return entity.Prediction(
+      date: date.toIso8601String(),
+      animal: jsonEncode(animal.toJson()),
+      lotteryHouse: lotteryHouse,
+      isWinner: isWinner,
+      lastSevenDays: lastSevenDays,
+      lastFifteenDays: lastFifteenDays,
+      lastThirtyDays: lastThirtyDays,
     );
   }
 

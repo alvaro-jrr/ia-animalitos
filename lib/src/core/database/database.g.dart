@@ -74,6 +74,8 @@ class _$AppDatabase extends AppDatabase {
 
   AnimalResultDao? _resultDaoInstance;
 
+  PredictionDao? _predictionDaoInstance;
+
   Future<sqflite.Database> open(
     String path,
     List<Migration> migrations, [
@@ -97,6 +99,8 @@ class _$AppDatabase extends AppDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `AnimalResult` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `date` TEXT NOT NULL, `animal` TEXT, `lotteryHouse` TEXT NOT NULL, `hour` TEXT NOT NULL)');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `Prediction` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `date` TEXT NOT NULL, `animal` TEXT NOT NULL, `lotteryHouse` TEXT NOT NULL, `isWinner` INTEGER NOT NULL, `lastSevenDays` INTEGER NOT NULL, `lastFifteenDays` INTEGER NOT NULL, `lastThirtyDays` INTEGER NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -107,6 +111,11 @@ class _$AppDatabase extends AppDatabase {
   @override
   AnimalResultDao get resultDao {
     return _resultDaoInstance ??= _$AnimalResultDao(database, changeListener);
+  }
+
+  @override
+  PredictionDao get predictionDao {
+    return _predictionDaoInstance ??= _$PredictionDao(database, changeListener);
   }
 }
 
@@ -181,5 +190,86 @@ class _$AnimalResultDao extends AnimalResultDao {
   Future<void> insertResults(List<AnimalResult> results) async {
     await _animalResultInsertionAdapter.insertList(
         results, OnConflictStrategy.replace);
+  }
+}
+
+class _$PredictionDao extends PredictionDao {
+  _$PredictionDao(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database),
+        _predictionInsertionAdapter = InsertionAdapter(
+            database,
+            'Prediction',
+            (Prediction item) => <String, Object?>{
+                  'id': item.id,
+                  'date': item.date,
+                  'animal': item.animal,
+                  'lotteryHouse': item.lotteryHouse,
+                  'isWinner': item.isWinner ? 1 : 0,
+                  'lastSevenDays': item.lastSevenDays,
+                  'lastFifteenDays': item.lastFifteenDays,
+                  'lastThirtyDays': item.lastThirtyDays
+                });
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<Prediction> _predictionInsertionAdapter;
+
+  @override
+  Future<List<Prediction>> findAllPredictions() async {
+    return _queryAdapter.queryList('SELECT * FROM Prediction',
+        mapper: (Map<String, Object?> row) => Prediction(
+            id: row['id'] as int?,
+            date: row['date'] as String,
+            animal: row['animal'] as String,
+            lotteryHouse: row['lotteryHouse'] as String,
+            isWinner: (row['isWinner'] as int) != 0,
+            lastSevenDays: row['lastSevenDays'] as int,
+            lastFifteenDays: row['lastFifteenDays'] as int,
+            lastThirtyDays: row['lastThirtyDays'] as int));
+  }
+
+  @override
+  Future<List<Prediction>> findPredictionsByDate(String date) async {
+    return _queryAdapter.queryList('SELECT * FROM Prediction WHERE date = ?1',
+        mapper: (Map<String, Object?> row) => Prediction(
+            id: row['id'] as int?,
+            date: row['date'] as String,
+            animal: row['animal'] as String,
+            lotteryHouse: row['lotteryHouse'] as String,
+            isWinner: (row['isWinner'] as int) != 0,
+            lastSevenDays: row['lastSevenDays'] as int,
+            lastFifteenDays: row['lastFifteenDays'] as int,
+            lastThirtyDays: row['lastThirtyDays'] as int),
+        arguments: [date]);
+  }
+
+  @override
+  Future<void> deletePredictionsByDate(String date) async {
+    await _queryAdapter.queryNoReturn('DELETE FROM Prediction WHERE date = ?1',
+        arguments: [date]);
+  }
+
+  @override
+  Future<void> deletePredictionsBeforeDate(String date) async {
+    await _queryAdapter.queryNoReturn('DELETE FROM Prediction WHERE date <= ?1',
+        arguments: [date]);
+  }
+
+  @override
+  Future<void> insertPrediction(Prediction prediction) async {
+    await _predictionInsertionAdapter.insert(
+        prediction, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> insertPredictions(List<Prediction> predictions) async {
+    await _predictionInsertionAdapter.insertList(
+        predictions, OnConflictStrategy.replace);
   }
 }
