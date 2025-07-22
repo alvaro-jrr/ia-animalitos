@@ -26,8 +26,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
+    final resultsProvider = di.get<ResultsProvider>();
+
     /// Get the results.
-    di.get<ResultsProvider>().getResults();
+    resultsProvider.getResults();
+
+    /// Setup the timer.
+    resultsProvider.setupResultsTimer();
   }
 
   @override
