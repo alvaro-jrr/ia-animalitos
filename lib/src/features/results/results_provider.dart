@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:ai_animals_lottery/src/features/results/api/results_api.dart';
@@ -7,6 +9,9 @@ import 'package:ai_animals_lottery/src/features/results/models/animal_result.dar
 typedef ResultDates = ({DateTime today, DateTime yesterday});
 
 class ResultsProvider extends ChangeNotifier {
+  /// The timer to update the results.
+  Timer? _timer;
+
   /// The results by date.
   Map<DateTime, List<AnimalResult>> resultsByDate = {};
 
@@ -28,6 +33,9 @@ class ResultsProvider extends ChangeNotifier {
 
   /// Gets the lottery results.
   Future<void> getResults() async {
+    // If the results are already loading, do nothing.
+    if (isLoadingResults) return;
+
     isLoadingResults = true;
     notifyListeners();
 
@@ -56,5 +64,55 @@ class ResultsProvider extends ChangeNotifier {
 
     // Get the results from the API.
     getResults();
+  }
+
+  /// Setups the timer to update the results.
+  void setupResultsTimer() {
+    if (_timer != null) return;
+
+    final initalInterval = getResultsTimerInterval();
+
+    // Setup the timer.
+    _timer = Timer.periodic(initalInterval, (timer) {
+      // Get the results.
+      getResults();
+
+      // Setup the timer again.
+      setupResultsTimer();
+
+      // Cancel the timer.
+      _timer?.cancel();
+      _timer = null;
+    });
+  }
+
+  /// Returns the interval to fetch the results.
+  Duration getResultsTimerInterval() {
+    // Get the current time.
+    final now = DateTime.now();
+    final hour = now.hour;
+    final minute = now.minute;
+
+    // If the hour is before 8, set the interval to the time to be 8.
+    if (hour < 8) {
+      final todayEightAm = DateTime(now.year, now.month, now.day, 8, 0, 0);
+
+      return todayEightAm.difference(now);
+    }
+
+    // If the hour is between 8 and 20, set the interval to the time to be 10 minutes.
+    if (hour >= 8 && hour <= 20) {
+      // Calculate how many minutes are left to 10.
+      final minutesToNextTen = 10 - (minute % 10);
+
+      final inTenMinutes = now.add(Duration(minutes: minutesToNextTen));
+
+      return inTenMinutes.difference(now);
+    }
+
+    // If the hour is after 21, set the interval to the time to be the next day at 8.
+    final tomorrowEightAm = DateTime(now.year, now.month, now.day + 1, 8, 0, 0);
+
+    return tomorrowEightAm.difference(now);
   }
 }
