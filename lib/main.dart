@@ -6,12 +6,15 @@ import 'package:ai_animals_lottery/src/core/utils/flavor_settings.dart';
 import 'package:ai_animals_lottery/src/core/widgets/app_providers.dart';
 import 'package:ai_animals_lottery/src/di.dart' as di;
 
-void main() {
+void main() async {
+  // Initialize the binding.
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Initialize the flavor settings.
   FlavorSettings.fromFlavor(Flavor.fromString(appFlavor ?? ''));
 
-  /// Initialize the dependencies.
-  di.init();
+  // Initialize the dependencies.
+  await di.init();
 
   runApp(const AppProviders(child: App()));
 }

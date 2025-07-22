@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ai_animals_lottery/src/features/results/models/lottery_house.dart';
+import 'package:ai_animals_lottery/src/core/models/lottery_house.dart';
 
 class ResultListHeader extends StatelessWidget {
   /// The lottery house.
