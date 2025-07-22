@@ -165,6 +165,13 @@ class _$AnimalResultDao extends AnimalResultDao {
   }
 
   @override
+  Future<void> deleteResultsBeforeDate(String date) async {
+    await _queryAdapter.queryNoReturn(
+        'DELETE FROM AnimalResult WHERE date <= ?1',
+        arguments: [date]);
+  }
+
+  @override
   Future<void> insertResult(AnimalResult result) async {
     await _animalResultInsertionAdapter.insert(
         result, OnConflictStrategy.replace);

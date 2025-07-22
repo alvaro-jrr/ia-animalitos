@@ -18,4 +18,7 @@ abstract class AnimalResultDao {
 
   @Query('DELETE FROM AnimalResult WHERE date = :date')
   Future<void> deleteResultsByDate(String date);
+
+  @Query('DELETE FROM AnimalResult WHERE date <= :date')
+  Future<void> deleteResultsBeforeDate(String date);
 }

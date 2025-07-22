@@ -28,6 +28,18 @@ class AnimalResultService {
       date.toIso8601String(),
     );
 
+    // Delete stale results for the given date.
+    deleteStaleResults(date);
+
     return results.map((e) => AnimalResult.fromEntity(e)).toList();
+  }
+
+  /// Deletes the results for dates that are at least 2 days old than the given [date].
+  Future<void> deleteStaleResults(DateTime date) async {
+    final twoDaysAgo = date.subtract(const Duration(days: 2));
+
+    return database.resultDao.deleteResultsBeforeDate(
+      twoDaysAgo.toIso8601String(),
+    );
   }
 }

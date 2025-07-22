@@ -67,7 +67,7 @@ class ResultsProvider extends ChangeNotifier {
       resultsByDate[selectedDate] = response;
 
       // Save the results to the database.
-      di.get<DatabaseController>().animalResults.insertResults(response);
+      dbController.animalResults.insertResults(response);
     }
 
     isLoadingResults = false;
