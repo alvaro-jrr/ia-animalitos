@@ -27,5 +27,14 @@
     }
   },
   "noResultsAvailableYet": "No hay resultados disponibles aún",
-  "updateResults": "Actualizar resultados"
+  "updateResults": "Actualizar resultados",
+  "settings": "Ajustes",
+  "privacyPolicies": "Políticas de privacidad",
+  "termsAndConditions": "Términos y condiciones",
+  "appearance": "Apariencia",
+  "preferences": "Preferencias",
+  "legalInformation": "Información legal",
+  "system": "Sistema",
+  "light": "Claro",
+  "dark": "Oscuro"
 }

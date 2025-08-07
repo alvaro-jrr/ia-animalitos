@@ -55,4 +55,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get updateResults => 'Update results';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get privacyPolicies => 'Privacy policies';
+
+  @override
+  String get termsAndConditions => 'Terms and conditions';
+
+  @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get preferences => 'Preferences';
+
+  @override
+  String get legalInformation => 'Legal information';
+
+  @override
+  String get system => 'System';
+
+  @override
+  String get light => 'Light';
+
+  @override
+  String get dark => 'Dark';
 }

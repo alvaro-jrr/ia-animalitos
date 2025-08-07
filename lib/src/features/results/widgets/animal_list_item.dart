@@ -54,7 +54,6 @@ class AnimalListItem extends StatelessWidget {
             const SizedBox(width: 12.0),
           ],
           // Time of the result.
-          Icon(Icons.schedule, size: 16.0),
           const SizedBox(width: 4.0),
           Text(result.hour),
         ],

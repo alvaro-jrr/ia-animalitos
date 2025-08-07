@@ -183,6 +183,60 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Actualizar resultados'**
   String get updateResults;
+
+  /// No description provided for @settings.
+  ///
+  /// In es, this message translates to:
+  /// **'Ajustes'**
+  String get settings;
+
+  /// No description provided for @privacyPolicies.
+  ///
+  /// In es, this message translates to:
+  /// **'Políticas de privacidad'**
+  String get privacyPolicies;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In es, this message translates to:
+  /// **'Términos y condiciones'**
+  String get termsAndConditions;
+
+  /// No description provided for @appearance.
+  ///
+  /// In es, this message translates to:
+  /// **'Apariencia'**
+  String get appearance;
+
+  /// No description provided for @preferences.
+  ///
+  /// In es, this message translates to:
+  /// **'Preferencias'**
+  String get preferences;
+
+  /// No description provided for @legalInformation.
+  ///
+  /// In es, this message translates to:
+  /// **'Información legal'**
+  String get legalInformation;
+
+  /// No description provided for @system.
+  ///
+  /// In es, this message translates to:
+  /// **'Sistema'**
+  String get system;
+
+  /// No description provided for @light.
+  ///
+  /// In es, this message translates to:
+  /// **'Claro'**
+  String get light;
+
+  /// No description provided for @dark.
+  ///
+  /// In es, this message translates to:
+  /// **'Oscuro'**
+  String get dark;
 }
 
 class _AppLocalizationsDelegate
