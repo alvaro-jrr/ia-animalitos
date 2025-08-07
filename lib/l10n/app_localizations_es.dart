@@ -55,4 +55,22 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get updateResults => 'Actualizar resultados';
+
+  @override
+  String get settings => 'Ajustes';
+
+  @override
+  String get privacyPolicies => 'Políticas de privacidad';
+
+  @override
+  String get termsAndConditions => 'Términos y condiciones';
+
+  @override
+  String get appearance => 'Apariencia';
+
+  @override
+  String get preferences => 'Preferencias';
+
+  @override
+  String get legalInformation => 'Información legal';
 }

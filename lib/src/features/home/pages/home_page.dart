@@ -10,6 +10,7 @@ import 'package:ai_animals_lottery/src/features/predictions/predictions_provider
 import 'package:ai_animals_lottery/src/features/results/pages/results_page.dart';
 import 'package:ai_animals_lottery/src/features/results/results_provider.dart';
 import 'package:ai_animals_lottery/src/features/results/widgets/select_results_date_popup.dart';
+import 'package:ai_animals_lottery/src/features/settings/pages/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,7 +45,11 @@ class _HomePageState extends State<HomePage> {
       ),
       body: IndexedStack(
         index: _currentIndex,
-        children: [const ResultsPage(), const PredictionsPage()],
+        children: [
+          const ResultsPage(),
+          const PredictionsPage(),
+          const SettingsPage(),
+        ],
       ),
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
@@ -74,8 +79,13 @@ class _HomePageState extends State<HomePage> {
       return HomeAppBarSettings(title: localization.predictions);
     }
 
-    /// Statistics.
-    return HomeAppBarSettings(title: localization.statistics);
+    /// Settings.
+    if (index == 2) {
+      return HomeAppBarSettings(title: localization.settings);
+    }
+
+    /// Default.
+    return HomeAppBarSettings(title: '');
   }
 
   /// Handles the destination selected.

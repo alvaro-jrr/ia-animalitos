@@ -27,5 +27,11 @@
     }
   },
   "noResultsAvailableYet": "No results available yet",
-  "updateResults": "Update results"
+  "updateResults": "Update results",
+  "settings": "Settings",
+  "privacyPolicies": "Privacy policies",
+  "termsAndConditions": "Terms and conditions",
+  "appearance": "Appearance",
+  "preferences": "Preferences",
+  "legalInformation": "Legal information"
 }
