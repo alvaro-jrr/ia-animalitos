@@ -8,13 +8,17 @@ class SettingsItem extends StatelessWidget {
   final IconData icon;
 
   /// The callback when the item is tapped.
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+
+  /// The trailing widget of the item.
+  final Widget? trailing;
 
   const SettingsItem({
     super.key,
     required this.title,
     required this.icon,
-    required this.onTap,
+    this.onTap,
+    this.trailing,
   });
 
   @override
@@ -23,6 +27,7 @@ class SettingsItem extends StatelessWidget {
       leading: Icon(icon),
       title: Text(title, style: TextStyle(fontSize: 14.0)),
       onTap: onTap,
+      trailing: trailing,
     );
   }
 }

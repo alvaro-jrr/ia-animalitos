@@ -219,6 +219,24 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Información legal'**
   String get legalInformation;
+
+  /// No description provided for @system.
+  ///
+  /// In es, this message translates to:
+  /// **'Sistema'**
+  String get system;
+
+  /// No description provided for @light.
+  ///
+  /// In es, this message translates to:
+  /// **'Claro'**
+  String get light;
+
+  /// No description provided for @dark.
+  ///
+  /// In es, this message translates to:
+  /// **'Oscuro'**
+  String get dark;
 }
 
 class _AppLocalizationsDelegate

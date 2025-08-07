@@ -33,5 +33,8 @@
   "termsAndConditions": "Terms and conditions",
   "appearance": "Appearance",
   "preferences": "Preferences",
-  "legalInformation": "Legal information"
+  "legalInformation": "Legal information",
+  "system": "System",
+  "light": "Light",
+  "dark": "Dark"
 }

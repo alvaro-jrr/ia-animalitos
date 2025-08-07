@@ -73,4 +73,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get legalInformation => 'Legal information';
+
+  @override
+  String get system => 'System';
+
+  @override
+  String get light => 'Light';
+
+  @override
+  String get dark => 'Dark';
 }
