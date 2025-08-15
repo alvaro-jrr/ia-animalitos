@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ai_animals_lottery/src/app.dart';
+import 'package:ai_animals_lottery/src/core/services/url_service.dart';
 import 'package:ai_animals_lottery/src/core/styles/app_theme_provider.dart';
+import 'package:ai_animals_lottery/src/core/utils/constants.dart';
 import 'package:ai_animals_lottery/src/features/settings/widgets/settings_category.dart';
 import 'package:ai_animals_lottery/src/features/settings/widgets/settings_item.dart';
 import 'package:ai_animals_lottery/src/features/settings/widgets/theme_mode_switch.dart';
@@ -32,10 +34,16 @@ class SettingsPage extends StatelessWidget {
           SettingsItem(
             icon: Icons.privacy_tip_outlined,
             title: localization.privacyPolicies,
+            onTap: () {
+              UrlService.openUrlString('$webUrl/privacy');
+            },
           ),
           SettingsItem(
             icon: Icons.article_outlined,
             title: localization.termsAndConditions,
+            onTap: () {
+              UrlService.openUrlString('$webUrl/terms');
+            },
           ),
           // Share.
         ],
