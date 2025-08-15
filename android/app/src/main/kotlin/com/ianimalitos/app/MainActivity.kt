@@ -1,4 +1,4 @@
-package com.example.ai_animals_lottery
+package com.ianimalitos.app
 
 import io.flutter.embedding.android.FlutterActivity
 
