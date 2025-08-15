@@ -13,6 +13,7 @@ samples, guidance on mobile development, and a full API reference.
 3. Run `fvm install` in the project root. This will install the proper flutter version for the app.
 4. Create `.env.dev` and `.env.prod` based on the `.env.example`
 5. Execute `fvm dart run build_runner build --delete-conflicting-outputs`
+6. Place the `key.properties` inside the `/android` folder and the `release.jks` in `/android/keys`
 
 ## Run the App
 
@@ -35,9 +36,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ### App Bundle
 
-- Development: `fvm flutter build appbundle --target-platform android-arm,android-arm64,android-x64 -t lib/main_dev.dart --flavor=development`
+- Development: `fvm flutter build appbundle -t lib/main.dart --flavor=development`
 
-- Production: `fvm flutter build appbundle --target-platform android-arm,android-arm64,android-x64 -t lib/main_prod.dart --flavor=production`
+- Production: `fvm flutter build appbundle -t lib/main.dart --flavor=production`
 
 ### iOS
 
