@@ -1,2 +1,2 @@
 /// The web URL of the app.
-const webUrl = 'https://ia-animalitos.vercel.app';
+const webUrl = 'https://ianimalitos.vercel.app';
